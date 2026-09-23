@@ -17,28 +17,24 @@ void main(){
 		for (i=0;i<n;i++){
 		printf("%d ",ptr[i]);
 		}
-		printf("\nenter the new size of an array\n");
+		printf("\n enter the new size of an array \n");
 		scanf("%d",&newn);
 		newptr=ptr;
 		newptr= (int *)realloc(newptr,newn*sizeof(int));
-		if(newptr == NULL){
-			printf("\n no more memeory in heap \n and the prevous elements in an array are \n");
+		if(newptr == NULL || newn<=n){
+			printf("\n no more memeory in heap or the new size is less or equal prevous size \n The prevous elements in an array are \n");
 			for(i=0;i<n;i++){
 		printf("%d ",ptr[i]);
 		}
+		return ;
 		}
-		if(newn>n){
 			for (i=n;i<newn;i++){
 				newptr[i]=i;
 			}
-		}
-		else {
-			printf("new size is <then old array size\n");
-			printf(" and elements in your new size array are \n");
-		}
-		printf("elements in array are \n");
+			printf("elements in new sized array are \n");
 		for (i=0;i<newn;i++){
 		printf("%d ",newptr[i]);
 		}
 		free(newptr);
+		free(ptr);
 }
